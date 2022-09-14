@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import { hospitals } from "./db";
+import {policeStations} from "./db";
 
 function App() {
   const [countyName , setCountyName] = useState("");
@@ -33,11 +34,19 @@ function App() {
       <p>{hospital.name}</p>
     </div>
   ));
+  const showAllPoliceStations = policeStations.map((station) => (
+    station.county === countyName && <div>
+      <p>{station.name}</p>
+    </div>
+  ));
 
   return <div className="App">
     <h2> Hospitals In {countyName}</h2>
    
     {showAllHospitals}
+    <h2> Police stations In {countyName}</h2>
+
+    {showAllPoliceStations}
     </div>;
 }
 
