@@ -1,10 +1,11 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import { hospitals } from "./db";
-import {policeStations} from "./db";
+import { policeStations } from "./db";
 
 function App() {
-  const [countyName , setCountyName] = useState("");
+  const [countyName, setCountyName] = useState("");
+  const [police, setPolice] = useState(true);
   const showPosition = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -29,25 +30,42 @@ function App() {
     showPosition();
   }, []);
 
-  const showAllHospitals = hospitals.map((hospital) => (
-    hospital.county === countyName && <div>
-      <p>{hospital.name}</p>
-    </div>
-  ));
-  const showAllPoliceStations = policeStations.map((station) => (
-    station.county === countyName && <div>
-      <p>{station.name}</p>
-    </div>
-  ));
+  const showAllHospitals = hospitals.map(
+    (hospital) =>
+      hospital.county === countyName &&
+      police && (
+        <div>
+          <p>{hospital.name}</p>
+        </div>
+      )
+  );
+  const showAllPoliceStations = policeStations.map(
+    (station) =>
+      station.county === countyName &&
+      !police && (
+        <div>
+          <p>{station.name}</p>
+        </div>
+      )
+  );
+  const showPoliceButton = police && (
+    <button onClick={() => setPolice(!police)}>Show Police stations</button>
+  );
+  const showHospitalButton = !police && (
+    <button onClick={() => setPolice(!police)}>Show Hospitals</button>
+  );
 
-  return <div className="App">
-    <h2> Hospitals In {countyName}</h2>
-   
-    {showAllHospitals}
-    <h2> Police stations In {countyName}</h2>
+  return (
+    <div className="App">
+      {showPoliceButton}
+      {showHospitalButton}
+      <h1>{countyName} ESSENTIAL SERVICES</h1>
 
-    {showAllPoliceStations}
-    </div>;
+      {showAllHospitals}
+
+      {showAllPoliceStations}
+    </div>
+  );
 }
 
 export default App;
