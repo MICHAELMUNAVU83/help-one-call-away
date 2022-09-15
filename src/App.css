@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Arimo&family=Bebas+Neue&family=Combo&family=Comfortaa&family=Dancing+Script:wght@500&family=Delius&family=Inter:wght@300&family=Kanit:wght@200&family=Krona+One&family=Merienda&family=Playfair+Display:ital@1&family=Roboto+Serif:opsz,wght@8..144,600&display=swap');
 
 
-h1{
+.h1{
   text-align: center;
   text-decoration: underline;
+  font-size: 2rem;
   font-family: 'Roboto Serif', serif;
 }
 .button{
@@ -94,4 +95,19 @@ h1{
   padding-top: 20px;
   padding-bottom: 20px;
   border-radius: 10px;
+}
+@media (max-width: 640px) {
+  .h1{
+    font-size: 1rem;
+  }
+  .each-hospital-div{
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 3%;
+  }
+  .each-police-div{
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 3%;
+  }
 }

@@ -83,7 +83,7 @@ function App() {
     <div className="App">
       {showPoliceButton}
       {showHospitalButton}
-      <h1>{countyName} ESSENTIAL SERVICES</h1>
+      <p className="h1">{countyName.toUpperCase()} ESSENTIAL SERVICES</p>
       <div className="all-hospitals-div">{showAllHospitals}</div>
       
       <div className="all-police-div">{showAllPoliceStations}</div>
