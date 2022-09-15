@@ -2,6 +2,7 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import { hospitals } from "./db";
 import { policeStations } from "./db";
+import { BiPhoneCall } from "react-icons/bi";
 
 function App() {
   const [countyName, setCountyName] = useState("");
@@ -36,6 +37,14 @@ function App() {
       police && (
         <div>
           <p>{hospital.name}</p>
+          <span>Location : </span> <span>{hospital.location}</span>
+          <div>
+            <span className="phone">{hospital.number}</span>
+            <a href={`tel:${hospital.number}`}>
+              {" "}
+              <BiPhoneCall />{" "}
+            </a>
+          </div>
         </div>
       )
   );
@@ -45,6 +54,11 @@ function App() {
       !police && (
         <div>
           <p>{station.name}</p>
+          <span className="phone">{station.number}</span>
+          <a href={`tel:${station.number}`}>
+            {" "}
+            <BiPhoneCall />{" "}
+          </a>
         </div>
       )
   );

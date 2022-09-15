@@ -3,7 +3,7 @@ export const policeStations = [
     id: 1,
     type: "police",
     name: "Police Control Room",
-    number: "07212339",
+    number: "0721233999",
     county: "Nairobi County",
   },
   {
