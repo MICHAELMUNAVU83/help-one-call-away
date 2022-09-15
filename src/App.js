@@ -11,7 +11,7 @@ function App() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         fetch(
-          `https://api.opencagedata.com/geocode/v1/json?q=${position.coords.latitude}+${position.coords.longitude}&key=f25a890891384788ae4c5f991cf265fb`,
+          `https://api.opencagedata.com/geocode/v1/json?q=${position.coords.latitude}+${position.coords.longitude}&key=9b2570bb3d51443da6ba9468a530375b`,
           {
             method: "GET",
           }
@@ -21,6 +21,7 @@ function App() {
             console.error("Error:", error);
           })
           .then((response) => {
+            console.log(response);
             console.log(response.results[0].components.state);
             setCountyName(response.results[0].components.state);
           });
@@ -37,8 +38,8 @@ function App() {
       police && (
         <div className="each-hospital-div" key={hospital.id}>
           <h2>{hospital.name}</h2>
-          <div>
-            <span>Location : </span> <span>{hospital.location}</span>
+          <div >
+            <span className="location-title">Location : </span> <span className="location-value">{hospital.location}</span>
           </div>
 
           <div>
@@ -69,12 +70,12 @@ function App() {
   );
   const showPoliceButton = police && (
     <div className="button">
-      <button onClick={() => setPolice(!police)}>Show Police stations</button>
+      <button className="police-button" onClick={() => setPolice(!police)}>Show Police stations</button>
     </div>
   );
   const showHospitalButton = !police && (
     <div className="button">
-      <button onClick={() => setPolice(!police)}>Show Hospitals</button>
+      <button className="hospital-button" onClick={() => setPolice(!police)}>Show Hospitals</button>
     </div>
   );
 
@@ -84,6 +85,7 @@ function App() {
       {showHospitalButton}
       <h1>{countyName} ESSENTIAL SERVICES</h1>
       <div className="all-hospitals-div">{showAllHospitals}</div>
+      
       <div className="all-police-div">{showAllPoliceStations}</div>
     </div>
   );

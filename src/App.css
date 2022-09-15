@@ -1,15 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Arimo&family=Bebas+Neue&family=Combo&family=Comfortaa&family=Dancing+Script:wght@500&family=Delius&family=Inter:wght@300&family=Kanit:wght@200&family=Krona+One&family=Merienda&family=Playfair+Display:ital@1&family=Roboto+Serif:opsz,wght@8..144,600&display=swap');
+
+
 h1{
   text-align: center;
+  text-decoration: underline;
+  font-family: 'Roboto Serif', serif;
 }
 .button{
   text-align: center;
   margin-top: 2%;
   
 }
-.button button{
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
+
 
 .all-hospitals-div {
   text-align: center;
@@ -33,6 +35,7 @@ h1{
 .each-hospital-div a {
   text-decoration: none;
   color: white;
+  font-size: 2rem;
 }
 .all-police-div {
   text-align: center;
@@ -52,9 +55,43 @@ h1{
 }
 .each-police-div > div {
   margin-bottom: 1%;
+  font-family: 'Arimo', sans-serif;
 }
 .each-police-div a {
   text-decoration: none;
   color: white;
+  font-size: 2rem;
 }
 
+.phone{
+  font-size: 2rem;
+}
+.location-value{
+  font-size: 1.5rem;
+ 
+}
+.location-title{
+  font-size: 1.5rem;
+  font-weight: bolder;
+  
+}
+.hospital-button{
+  background-color: blue;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  font-weight: bolder;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 10px;
+}
+.police-button{
+  background-color: red;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  font-weight: bolder;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 10px;
+}
