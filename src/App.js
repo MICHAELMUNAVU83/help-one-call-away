@@ -35,9 +35,12 @@ function App() {
     (hospital) =>
       hospital.county === countyName &&
       police && (
-        <div>
-          <p>{hospital.name}</p>
-          <span>Location : </span> <span>{hospital.location}</span>
+        <div className="each-hospital-div" key={hospital.id}>
+          <h2>{hospital.name}</h2>
+          <div>
+            <span>Location : </span> <span>{hospital.location}</span>
+          </div>
+
           <div>
             <span className="phone">{hospital.number}</span>
             <a href={`tel:${hospital.number}`}>
@@ -52,21 +55,27 @@ function App() {
     (station) =>
       station.county === countyName &&
       !police && (
-        <div>
-          <p>{station.name}</p>
-          <span className="phone">{station.number}</span>
-          <a href={`tel:${station.number}`}>
-            {" "}
-            <BiPhoneCall />{" "}
-          </a>
+        <div className="each-police-div" key={station.id}>
+          <h2>{station.name}</h2>
+          <div>
+            <span className="phone">{station.number}</span>
+            <a href={`tel:${station.number}`}>
+              {" "}
+              <BiPhoneCall />{" "}
+            </a>
+          </div>
         </div>
       )
   );
   const showPoliceButton = police && (
-    <button onClick={() => setPolice(!police)}>Show Police stations</button>
+    <div className="button">
+      <button onClick={() => setPolice(!police)}>Show Police stations</button>
+    </div>
   );
   const showHospitalButton = !police && (
-    <button onClick={() => setPolice(!police)}>Show Hospitals</button>
+    <div className="button">
+      <button onClick={() => setPolice(!police)}>Show Hospitals</button>
+    </div>
   );
 
   return (
@@ -74,10 +83,8 @@ function App() {
       {showPoliceButton}
       {showHospitalButton}
       <h1>{countyName} ESSENTIAL SERVICES</h1>
-
-      {showAllHospitals}
-
-      {showAllPoliceStations}
+      <div className="all-hospitals-div">{showAllHospitals}</div>
+      <div className="all-police-div">{showAllPoliceStations}</div>
     </div>
   );
 }
